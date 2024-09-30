@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://doiei1y83ifpt"]
+[gd_scene load_steps=12 format=3 uid="uid://doiei1y83ifpt"]
 
 [ext_resource type="Texture2D" uid="uid://c2fhn16s17j5m" path="res://assets/ness-room.png" id="1_8ikvk"]
 [ext_resource type="Texture2D" uid="uid://dj3dtdo6qcro1" path="res://assets/ness-sleep-1.png" id="2_80op0"]
 [ext_resource type="Script" path="res://scripts/ness.gd" id="2_su5gj"]
 [ext_resource type="Texture2D" uid="uid://chomkf6p5uopy" path="res://assets/ness-sleep-2.png" id="3_e3go4"]
+[ext_resource type="Script" path="res://scripts/zelda.gd" id="5_s0xtp"]
+[ext_resource type="Texture2D" uid="uid://b44kcqs6pbtv8" path="res://assets/zelda-stand-1.png" id="5_t3xb0"]
+[ext_resource type="Texture2D" uid="uid://c6fjfhttwo0vn" path="res://assets/zelda-stand-2.png" id="6_6rpol"]
+[ext_resource type="Texture2D" uid="uid://bpd1jyiece6fb" path="res://assets/zelda-right-1.png" id="7_npxru"]
+[ext_resource type="Texture2D" uid="uid://dffe77kl6yqgy" path="res://assets/zelda-right-2.png" id="8_x7srs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wk5dp"]
 animations = [{
@@ -19,6 +24,31 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7aiq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_t3xb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6rpol")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_npxru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x7srs")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="room" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,3 +61,11 @@ script = ExtResource("2_su5gj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ness"]
 position = Vector2(200, 65)
 sprite_frames = SubResource("SpriteFrames_wk5dp")
+
+[node name="zelda" type="Area2D" parent="."]
+script = ExtResource("5_s0xtp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="zelda"]
+position = Vector2(52, 76)
+sprite_frames = SubResource("SpriteFrames_w7aiq")
+animation = &"walk"
