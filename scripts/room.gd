@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var zelda_scene: PackedScene
+@export var dialogue: PackedScene
 
 func _ready():
 	$ZeldaTimer.start()
@@ -14,5 +15,5 @@ func _on_zelda_timer_timeout():
 	add_child(zelda)
 
 func _on_zelda_done_walking():
-	print('done!')
-	
+	var dlg = dialogue.instantiate()
+	add_child(dlg)

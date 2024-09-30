@@ -9,6 +9,7 @@
 [node name="room" type="Area2D"]
 script = ExtResource("1_ddgj6")
 zelda_scene = ExtResource("5_1edp2")
+dialogue = ExtResource("7_gnfm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(512, 256)
@@ -20,7 +21,5 @@ texture = ExtResource("1_8ikvk")
 [node name="ZeldaTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
-
-[node name="Dialogue" parent="." instance=ExtResource("7_gnfm1")]
 
 [connection signal="timeout" from="ZeldaTimer" to="." method="_on_zelda_timer_timeout"]
