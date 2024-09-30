@@ -11,5 +11,12 @@ config_version=5
 [application]
 
 config/name="game"
+run/main_scene="res://scenes/room.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=128
+window/stretch/mode="canvas_items"
