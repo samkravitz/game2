@@ -3,12 +3,22 @@ extends Control
 @onready var content := get_node("Content") as RichTextLabel
 @onready var type_timer := get_node("TypeTimer") as Timer
 
+const DIALOGUE_MESSAGES = [
+	'N-Ness? Ness... It\'s me, Zelda.',
+	'I have come to visit you in a dream.',
+	'I need your help... I\'ve been kidnapped, and I need you to rescue me!',
+	'You\'ll need our melody to rescue me.',
+	'Our melody, you remember it right? How did it go again?',
+]
+
+var dialogue_index
+
 func _ready() -> void:
-	await get_tree().create_timer(1.0).timeout
-	update_message("Hi I was generated for the dialogue system test for the godot game engine")
+	dialogue_index = 0
+	start_message(DIALOGUE_MESSAGES[dialogue_index])
   
 # Update the message and starts typing
-func update_message(message: String) -> void:
+func start_message(message: String) -> void:
 	content.bbcode_text = message
 	content.visible_characters = 0
 	type_timer.start()
