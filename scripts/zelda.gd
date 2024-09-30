@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED = 20
+const SPEED = 80
 
 enum ZeldaState {
 	WALKING,
@@ -16,6 +16,6 @@ func _ready():
 func _process(delta):
 	if state == ZeldaState.WALKING:
 		position.x += delta * SPEED
-		if position.x >= 80:
+		if position.x >= 320:
 			state = ZeldaState.STANDING
 			$AnimatedSprite2D.play("stand")

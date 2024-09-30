@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cetnui43y63xp"]
+
+[ext_resource type="Script" path="res://scripts/ness.gd" id="1_1y1up"]
+[ext_resource type="Texture2D" uid="uid://dj3dtdo6qcro1" path="res://assets/ness-sleep-1.png" id="2_kdfs6"]
+[ext_resource type="Texture2D" uid="uid://chomkf6p5uopy" path="res://assets/ness-sleep-2.png" id="3_vk4sd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wk5dp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kdfs6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vk4sd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="ness" type="Area2D"]
+position = Vector2(798, 261)
+scale = Vector2(4, 4)
+script = ExtResource("1_1y1up")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wk5dp")
+frame = 1
+frame_progress = 0.266457

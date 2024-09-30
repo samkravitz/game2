@@ -1,43 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://doiei1y83ifpt"]
+[gd_scene load_steps=6 format=3 uid="uid://doiei1y83ifpt"]
 
 [ext_resource type="Texture2D" uid="uid://c2fhn16s17j5m" path="res://assets/ness-room.png" id="1_8ikvk"]
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_ddgj6"]
-[ext_resource type="Texture2D" uid="uid://dj3dtdo6qcro1" path="res://assets/ness-sleep-1.png" id="2_80op0"]
-[ext_resource type="Script" path="res://scripts/ness.gd" id="2_su5gj"]
-[ext_resource type="Texture2D" uid="uid://chomkf6p5uopy" path="res://assets/ness-sleep-2.png" id="3_e3go4"]
+[ext_resource type="PackedScene" uid="uid://cetnui43y63xp" path="res://scenes/ness.tscn" id="4_x2ow7"]
 [ext_resource type="PackedScene" uid="uid://b5qevewno7pyu" path="res://scenes/zelda.tscn" id="5_1edp2"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wk5dp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_80op0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_e3go4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}]
+[ext_resource type="PackedScene" uid="uid://bc8kxj70awol1" path="res://scenes/dialogue.tscn" id="7_gnfm1"]
 
 [node name="room" type="Area2D"]
 script = ExtResource("1_ddgj6")
 zelda_scene = ExtResource("5_1edp2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(128, 64)
+position = Vector2(512, 256)
+scale = Vector2(4, 4)
 texture = ExtResource("1_8ikvk")
 
-[node name="ness" type="Area2D" parent="."]
-script = ExtResource("2_su5gj")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ness"]
-position = Vector2(200, 65)
-sprite_frames = SubResource("SpriteFrames_wk5dp")
+[node name="ness" parent="." instance=ExtResource("4_x2ow7")]
 
 [node name="ZeldaTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="Dialogue" parent="." instance=ExtResource("7_gnfm1")]
 
 [connection signal="timeout" from="ZeldaTimer" to="." method="_on_zelda_timer_timeout"]

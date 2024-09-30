@@ -32,6 +32,7 @@ animations = [{
 }]
 
 [node name="zelda" type="Area2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_1fugu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
