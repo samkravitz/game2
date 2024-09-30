@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c44l0oeg3ladi"]
+
+[node name="Melody" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 138.0
+offset_top = 328.0
+offset_right = 138.0
+offset_bottom = 328.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = -58.0
+offset_right = 724.0
+offset_bottom = 149.0
+
+[node name="Staff" type="Node2D" parent="Panel"]
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Staff"]
+offset_left = 46.0
+offset_top = 46.0
+offset_right = 644.0
+offset_bottom = 51.0
+color = Color(0.545098, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/Staff"]
+offset_left = 46.0
+offset_top = 70.0
+offset_right = 643.0
+offset_bottom = 75.0
+color = Color(0.545098, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/Staff"]
+offset_left = 46.0
+offset_top = 94.0
+offset_right = 644.0
+offset_bottom = 99.0
+color = Color(0.545098, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Panel/Staff"]
+offset_left = 46.0
+offset_top = 118.0
+offset_right = 644.0
+offset_bottom = 123.0
+color = Color(0.545098, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Panel/Staff"]
+offset_left = 46.0
+offset_top = 142.0
+offset_right = 644.0
+offset_bottom = 147.0
+color = Color(0.545098, 0, 0, 1)
+
+[node name="Instruction" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -48.0
+offset_right = 383.0
+offset_bottom = -25.0
+text = "How did our melody go again?
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 114.0
+offset_right = 354.0
+offset_bottom = 137.0
+text = "Press arrow keys or spacebar to play."
