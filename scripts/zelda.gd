@@ -9,6 +9,8 @@ enum ZeldaState {
 
 var state
 
+signal zelda_done_walking
+
 func _ready():
 	$AnimatedSprite2D.play("walk")
 	state = ZeldaState.WALKING
@@ -19,3 +21,4 @@ func _process(delta):
 		if position.x >= 320:
 			state = ZeldaState.STANDING
 			$AnimatedSprite2D.play("stand")
+			zelda_done_walking.emit()
