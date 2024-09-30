@@ -1,14 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://doiei1y83ifpt"]
+[gd_scene load_steps=8 format=3 uid="uid://doiei1y83ifpt"]
 
 [ext_resource type="Texture2D" uid="uid://c2fhn16s17j5m" path="res://assets/ness-room.png" id="1_8ikvk"]
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_ddgj6"]
 [ext_resource type="Texture2D" uid="uid://dj3dtdo6qcro1" path="res://assets/ness-sleep-1.png" id="2_80op0"]
 [ext_resource type="Script" path="res://scripts/ness.gd" id="2_su5gj"]
 [ext_resource type="Texture2D" uid="uid://chomkf6p5uopy" path="res://assets/ness-sleep-2.png" id="3_e3go4"]
-[ext_resource type="Script" path="res://scripts/zelda.gd" id="5_s0xtp"]
-[ext_resource type="Texture2D" uid="uid://b44kcqs6pbtv8" path="res://assets/zelda-stand-1.png" id="5_t3xb0"]
-[ext_resource type="Texture2D" uid="uid://c6fjfhttwo0vn" path="res://assets/zelda-stand-2.png" id="6_6rpol"]
-[ext_resource type="Texture2D" uid="uid://bpd1jyiece6fb" path="res://assets/zelda-right-1.png" id="7_npxru"]
-[ext_resource type="Texture2D" uid="uid://dffe77kl6yqgy" path="res://assets/zelda-right-2.png" id="8_x7srs"]
+[ext_resource type="PackedScene" uid="uid://b5qevewno7pyu" path="res://scenes/zelda.tscn" id="5_1edp2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wk5dp"]
 animations = [{
@@ -24,32 +21,9 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w7aiq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_t3xb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_6rpol")
-}],
-"loop": true,
-"name": &"stand",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_npxru")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_x7srs")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
-
 [node name="room" type="Area2D"]
+script = ExtResource("1_ddgj6")
+zelda_scene = ExtResource("5_1edp2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(128, 64)
@@ -62,10 +36,8 @@ script = ExtResource("2_su5gj")
 position = Vector2(200, 65)
 sprite_frames = SubResource("SpriteFrames_wk5dp")
 
-[node name="zelda" type="Area2D" parent="."]
-script = ExtResource("5_s0xtp")
+[node name="ZeldaTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="zelda"]
-position = Vector2(52, 76)
-sprite_frames = SubResource("SpriteFrames_w7aiq")
-animation = &"walk"
+[connection signal="timeout" from="ZeldaTimer" to="." method="_on_zelda_timer_timeout"]

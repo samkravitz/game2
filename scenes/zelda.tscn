@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5qevewno7pyu"]
+
+[ext_resource type="Script" path="res://scripts/zelda.gd" id="1_1fugu"]
+[ext_resource type="Texture2D" uid="uid://b44kcqs6pbtv8" path="res://assets/zelda-stand-1.png" id="2_11vty"]
+[ext_resource type="Texture2D" uid="uid://c6fjfhttwo0vn" path="res://assets/zelda-stand-2.png" id="3_lo3ai"]
+[ext_resource type="Texture2D" uid="uid://bpd1jyiece6fb" path="res://assets/zelda-right-1.png" id="4_r7vhd"]
+[ext_resource type="Texture2D" uid="uid://dffe77kl6yqgy" path="res://assets/zelda-right-2.png" id="5_47e3w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7aiq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_11vty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lo3ai")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_r7vhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_47e3w")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="zelda" type="Area2D"]
+script = ExtResource("1_1fugu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(52, 76)
+sprite_frames = SubResource("SpriteFrames_w7aiq")
+animation = &"walk"
