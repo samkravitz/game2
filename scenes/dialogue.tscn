@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc8kxj70awol1"]
+
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="1_1yxcu"]
+[ext_resource type="Texture2D" uid="uid://c0dtbhh3khv05" path="res://assets/dialogue-background.png" id="2_utexc"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchor_right = 0.779
+anchor_bottom = 0.248
+offset_left = 138.0
+offset_top = 328.0
+offset_right = 138.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1yxcu")
+metadata/_edit_group_ = true
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 798.0
+offset_bottom = 149.0
+texture = ExtResource("2_utexc")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Content" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 785.0
+offset_bottom = 128.0
+scroll_active = false
+
+[node name="TypeTimer" type="Timer" parent="."]
+wait_time = 0.04
+
+[connection signal="timeout" from="TypeTimer" to="." method="_on_type_timer_timeout"]
