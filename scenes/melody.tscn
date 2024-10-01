@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://c44l0oeg3ladi"]
+[gd_scene load_steps=3 format=3 uid="uid://c44l0oeg3ladi"]
+
+[ext_resource type="Script" path="res://scripts/melody.gd" id="1_kr0u5"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_qfevs"]
+format = 1
 
 [node name="Melody" type="Control"]
 layout_mode = 3
@@ -7,6 +12,7 @@ offset_left = 138.0
 offset_top = 328.0
 offset_right = 138.0
 offset_bottom = 328.0
+script = ExtResource("1_kr0u5")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -69,3 +75,13 @@ offset_top = 114.0
 offset_right = 354.0
 offset_bottom = 137.0
 text = "Press arrow keys or spacebar to play."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamWAV_qfevs")
+playback_type = 1
+
+[node name="NoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="NoteTimer" to="." method="_on_note_timer_timeout"]
