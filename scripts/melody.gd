@@ -10,13 +10,14 @@ enum KeyState {
 }
 
 var state: KeyState
-var can_play_note := true
+var can_play_note := false
 
 @onready var player := $AudioStreamPlayer
 @onready var notes := []
 
 func _ready():
 	state = KeyState.KEY_NONE
+	$NoteTimer.start()
 
 func _process(delta):
 	if can_play_note:

@@ -2,7 +2,10 @@ extends Area2D
 
 @export var zelda_scene: PackedScene
 @export var dialogue_scene: PackedScene
+@export var melody_scene: PackedScene
+
 var dialogue: Node
+var melody: Node
 
 func _ready():
 	$ZeldaTimer.start()
@@ -22,4 +25,6 @@ func _on_zelda_done_walking():
 
 func _on_dialogue_finished():
 	dialogue.queue_free()
+	melody = melody_scene.instantiate()
+	add_child(melody)
 	
